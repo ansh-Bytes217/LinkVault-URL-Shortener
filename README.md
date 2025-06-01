@@ -1,4 +1,4 @@
-*URL Shortener System*
+#URL Shortener System
 
 This is a FastAPI application that uses MongoDB and Redis for data storage and caching. The application includes lifecycle management to handle the initialization and cleanup of these resources.
 
@@ -20,7 +20,9 @@ git clone https://github.com/ansh-Bytes217/LinkVault-URL-Shortener.git
 cd url-shortener-system-design
 Create a virtual environment and activate it:
 python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+source venv/bin/activate 
+
+# On Windows use `venv\Scripts\activate`
 Install the dependencies:
 pip install -r requirements.txt
 Configuration
