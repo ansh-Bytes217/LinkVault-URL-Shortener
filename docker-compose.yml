@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  app:
+    build: . # uses current directory's Dockerfile
+    # image: url-shortener:latest # => optional dockerfile or image, choose 1
+    ports:
+      - "5000:5000" # Host:Container
+    volumes:
+      - .:/code
+    depends_on:
+      - mongodb
+      - redis
+  mongodb:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+# command - docker-compose up --build
+# Go inside the mongo container and run command `mongosh` and then `show dbs` to see the databases
+# Go inside the redis container and run command `redis-cli` and then `keys *` to see the keys
+
+# Follow these every time you make changes to the code
+# docker-compose build --no-cache
+# docker-compose up -d
