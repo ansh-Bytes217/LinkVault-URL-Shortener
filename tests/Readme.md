@@ -1,4 +1,5 @@
 Testing Url Shortener Service
+
 Prerequisites
 
 If testing locally, ensure that MongoDB and Redis are running either in Docker or locally
@@ -30,7 +31,8 @@ async def setup_test_db():
     yield
 We define test cases via @pytest.mark.anyio.
 
-We initialize the clients for each test (note that the fixtures themselves do not use await) and their implementation will consist of async-await methods. Note - The test_app and setup_test_db are the pytest fixtures to tear down resources for testing proving reusable code blocks and doing dependency injection in the below code block.
+We initialize the clients for each test (note that the fixtures themselves do not use await) and their implementation will consist of async-await methods. 
+Note - The test_app and setup_test_db are the pytest fixtures to tear down resources for testing proving reusable code blocks and doing dependency injection in the below code block.
 
 @pytest.mark.anyio
 async def test_mong_redis(test_app, setup_test_db):
@@ -53,9 +55,13 @@ Tests Hierarchy Issues
 Current Hierarchy
 project/
 │
+
 ├── fapp.py
+
 └── tests/
+
     └── test_fapp.py
+    
 To resolve import path issues when the tests folder needs to import fapp.py from the parent directory, add the following code:
 
 import sys
